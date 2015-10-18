@@ -16,10 +16,10 @@ $bdd=coBdd();
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/bootstrap-theme.css">
   <script src="js/vendor/jquery.js"></script>
+  <script src="js/jquery.touchSwipe.js" type="text/javascript"></script>
   <script src="js/foundation.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/vendor/modernizr.js" type="text/javascript"></script>
-  <script src="js/jquery.touchSwipe.min.js"></script>
 </head>
 <body>
   <script>
