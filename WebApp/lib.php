@@ -146,7 +146,7 @@ function viewLines2($lines){
 		$mod++;
 		echo '	<tr>
 	  				<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
-	  				<td class="btn btn-default btn-block destination" ><a href="index.php?line='.$lines[$i]['idLigne'].'">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</a></td>
+	  				<td class="buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</a></td>
 				</tr>';
 	}
 	//<td class="btn btn-default btn-block destination" onclick="function_js_ligne('.json_encode($lines[$i]).')">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</td>
@@ -180,12 +180,10 @@ function viewPat($path, $line){
 }
 
 function viewPath($path, $line){
-	//$nb=count($lines);
-	echo 'Choose your path :';
 		echo '	<tr>
-	  				<td class="number1" >'.$line.'</td>
-	  				<td class="btn btn-default btn-block destination" ><a href="index.php?line='.$line.'&path=0">'.$path[0].'  -</br> '.$path[1].'</a></td>
-	  				<td class="btn btn-default btn-block destination" ><a href="index.php?line='.$line.'&path=1">'.$path[1].'  -</br> '.$path[0].'</a></td>
+	  				
+	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=0">'.$path[0].'  -</br> '.$path[1].'</a></td>
+	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=1">'.$path[1].'  -</br> '.$path[0].'</a></td>
 				</tr>';
 	}
 

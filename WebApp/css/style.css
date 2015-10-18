@@ -80,3 +80,81 @@ img.mainlogo {
 i.awicon {
     margin: 10;
 }
+
+.number1{
+  font-weight: bold;
+  text-align: center;
+  background-color: pink;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.number2{
+  font-weight: bold;
+  text-align: center;
+  background-color: lightgreen;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.number5{
+  font-weight: bold;
+  text-align: center;
+  background-color: orange;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.number4{
+  font-weight: bold;
+  text-align: center;
+  background-color: lightblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.number3{
+  font-weight: bold;
+  text-align: center;
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.buttonLine{
+  font-weight: bold;
+  font-size: 16px;
+  background-color: lightgrey;
+
+  text-transform: uppercase;
+
+}
+
+.buttonLine:hover{
+  background-color: white;
+}
+
+button{
+
+    background-color: #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: black;
+    font-family: 'Oswald';
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
+
+tr{
+  margin-right: 500px;
+}
+
+td{
+  height: 50px;
+
+}
