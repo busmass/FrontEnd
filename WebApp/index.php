@@ -1,9 +1,9 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 
-  <?php
-  include "lib.php";
-  $bdd=coBdd();
-  ?>
+<?php
+include "lib.php";
+$bdd=coBdd();
+?>
 <html>
 <html>
 <head>
@@ -23,8 +23,8 @@
 <body>
   <script>
   $(document).ready(function () {
-  $(document).foundation();
-  $('a.left-off-canvas-toggle').on('click',function(){
+    $(document).foundation();
+    $('a.left-off-canvas-toggle').on('click',function(){
 
     });
   })
@@ -44,44 +44,27 @@
       </nav>
 
       <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li class="logo"><img src="img/busmass.png"  /></li>
-        <li><a href="#"><i class="awicon fa fa-exchange"></i>Lines</a></li>
-        <li><a href="#"><i class="awicon fa fa-map-marker"></i>Stops</a></li>
-        <li><a href="#"><i class="awicon fa fa-heart"></i>Favorites</a></li>
-        <li><a href="#"><i class="awicon fa fa-users"></i>Community</a></li>
-        <li><a href="#"><i class="awicon fa fa-cog"></i>Settings</a></li>
-        <li><a href="#"><i class="awicon fa fa-question-circle"></i>Help</a></li>
-      </ul>
-    </aside>
-
-            <table class="table table-striped">
-                    <tbody>
-                    <?php
-                    if (isset($_GET['path'])) {
-                      $line=$_GET['line'];
-                      $poids=recupData($line,$_GET['path'], $bdd);
-
-                    }
-                    else{
-
-                      if (isset($_GET['line'])) {
-                          $path=getPaths($bdd,$_GET['line']);
-                          viewPath($path,$_GET['line']);
-                      }
-                      else{
-
-                        $lines=getLines($bdd);
-                        viewLines2($lines);
-                      }
-                    }
-                    ?>
-              </tbody>
-            </table>
-        </div>
-      </section>
+        <ul class="off-canvas-list">
+          <li class="logo"><img src="img/busmass.png"  /></li>
+          <li><a href="/"><i class="awicon fa fa-exchange"></i>Lines</a></li>
+          <li><a href="#"><i class="awicon fa fa-map-marker"></i>Stops</a></li>
+          <li><a href="#"><i class="awicon fa fa-heart"></i>Favorites</a></li>
+          <li><a href="/index.php?page=co&id=youri"><i class="awicon fa fa-users"></i>Community</a></li>
+          <li><a href="#"><i class="awicon fa fa-cog"></i>Settings</a></li>
+          <li><a href="#"><i class="awicon fa fa-question-circle"></i>Help</a></li>
+        </ul>
+      </aside>
+      <?php
+        if (isset($_GET['page'])) {
+          if ($_GET['page'] == "co") {
+            include_once 'chat.php';
+          }
+        } else {
+          include_once 'lines.php';
+        }
+        ?>
+      <a class="exit-off-canvas"></a>
     </div>
-    <a class="exit-off-canvas"></a>
   </div>
 </body>
 </html>
