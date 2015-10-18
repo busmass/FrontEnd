@@ -43,13 +43,15 @@ function recupData($ligne, $path, $bdd){
 				$poids = $bus[$j]['poids'];
 				$poids /= 10;
 				$poids -= 100;
-				$poids = abs($poids);
+				$poids = (int)abs($poids);
 
-				if ($poids > 66) {
+				if ($poids > 75) {
 					$image = "img/barre_rouge.png";
-				} else if ($poids > 33 && $poids < 66) {
+				} else if ($poids > 50 && $poids < 75) {
 					$image = "img/barre_orange.png";
-				} else if ($poids < 33) {
+				} else if ($poids > 25 && $poids < 50) {
+					$image = "img/barre_jaune.png";
+				} else if ($poids < 25) {
 					$image = "img/barre_verte.png";
 				}
 				$icon = "<i class='fa fa-circle fa-3x'></i>";
@@ -69,30 +71,6 @@ function recupData($ligne, $path, $bdd){
 		print "</tr>";
 	}
 }
-
-/*
-for ($j = 0; $j < count($bus); $j++) {
-if ($bus[$j]['arret'] == $k) {
-$poids = $bus[$j]['poids'];
-$poids /= 10;
-$poids -= 100;
-$poids = abs($poids);
-
-if ($poids > 66) {
-$image = "img/barre_rouge.png";
-} else if ($poids > 33 && $poids < 66) {
-$image = "img/barre_orange.png";
-} else if ($poids < 33) {
-$image = "img/barre_verte.png";
-}
-$icon = "<i class='fa fa-circle fa-3x'></i>";
-$poids .= "% full";
-} else {
-$icon = "<i class='fa fa-circle-o fa-3x'></i>";
-$image = "";
-$poids = "";
-}
-}*/
 
 function viewChoiceLine($bdd){
 	echo 'Choose your line :';

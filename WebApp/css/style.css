@@ -227,3 +227,19 @@ td.destination {
 {
   text-align : center;
 }
+
+i.fa.fa-circle-o.fa-3x {
+    margin-left: -20.5px;
+}
+
+i.fa.fa-circle.fa-3x {
+    margin-left: -20.5px;
+}
+
+td.bubble {
+    border-left: 3.5px solid black;
+}
+
+td.destination {
+    margin-right: 10px;
+}
