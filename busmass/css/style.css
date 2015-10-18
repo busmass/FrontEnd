@@ -1,0 +1,82 @@
+.left-off-canvas-menu {
+  background: #fff;
+  color: #333;
+}
+
+ul.off-canvas-list li a {
+  color: #333;
+}
+
+.tab-bar {
+  background-color: #F9F9F9;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+.tab-bar ul li:hover {
+  background: none repeat scroll 0% 0% #222325;
+}
+
+.tab-bar ul li.active > a:hover,
+.tab-bar ul li.active > a
+{
+    background-color: red;
+}
+ul.off-canvas-list li a {
+  border-bottom: 1px solid #ddd;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+ul.off-canvas-list li a:hover {
+  background-color: rgb(27, 164, 167);
+  text-decoration: none;
+  color: #fff;
+}
+
+li.logo {
+    height: 45px;
+    border-bottom: 1px solid #ddd;
+}
+
+li.logo img {
+    margin-top: 12px;
+    margin-left: 15px;
+    max-height: 20px;
+}
+
+.left-small {
+  border-right: none;
+}
+
+.tab-bar h1 {
+  color: #333;
+}
+
+.burger {
+    margin-left: 10px;
+    margin-top: 6px;
+    color: #ddd;
+}
+
+.burger i:focus {
+  color: #333;
+}
+
+table {
+  width: 100%;
+}
+
+img.mainlogo {
+    max-height: 20px;
+    margin-top: 12px;
+}
+
+.row {
+  max-width: 100%!important;
+}
+
+i.awicon {
+    margin: 10;
+}
