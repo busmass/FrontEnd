@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row">
    <div class="logoForLogin">
    <img class="img-responsive" src="img/busmass.png" alt="Logo" width="80%" height="40%" />
    </div>

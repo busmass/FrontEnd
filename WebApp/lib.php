@@ -25,31 +25,74 @@ function coBdd(){
 
 function recupData($ligne, $path, $bdd){
 	$stack=array();
+	$requete = $bdd->query('SELECT nomArret FROM arrets WHERE id_ligne='.$ligne.'');
+	$arrets = $requete->fetchAll();
 	$requete = $bdd->query('SELECT * FROM bus WHERE id_ligne='.$ligne.' AND path='.$path.'');
-	$donnees = $requete->fetchAll();
-	foreach ($donnees as $donnee) {
-		$poids = $donnee['poids'];
-		$poids /= 10;
-		$poids -= 100;
-		$poids = abs($poids);
+	$bus = $requete->fetchAll();
+	$nb = count($arrets);
+	$match = false;
 
-		if ($poids > 66) {
-			$image = "img/barre_rouge.png";
-		} else if ($poids > 33 && $poids < 66) {
-			$image = "img/barre_orange.png";
-		} else if ($poids < 33) {
-			$image = "img/barre_verte.png";
-		}
-
-		echo "
+	for ($i = 0; $i < $nb; $i++) {
+		$match = false;
+		print "
 		<tr>
-			<td class='number1'>".$ligne."</td>
-			<td class='destination'> Le bus est entre l'arrêt ".$donnee['arret']." et l'arrêt ".((int)$donnee['arret'] + 1)." </td>
-			<td class='destination'><img src='".$image."' /></td>
-			<td class='destination'>".$poids."% plein</td>
-		</tr>";
+		<td class='destination'>".$arrets[$i]['nomArret']." </td>";
+		for ($j = 0; $j < count($bus); $j++) {
+			if ($bus[$j]['arret'] == $i) {
+				$match = true;
+				$poids = $bus[$j]['poids'];
+				$poids /= 10;
+				$poids -= 100;
+				$poids = abs($poids);
+
+				if ($poids > 66) {
+					$image = "img/barre_rouge.png";
+				} else if ($poids > 33 && $poids < 66) {
+					$image = "img/barre_orange.png";
+				} else if ($poids < 33) {
+					$image = "img/barre_verte.png";
+				}
+				$icon = "<i class='fa fa-circle fa-3x'></i>";
+				$poids .= "% full";
+
+				print "<td class='bubble'>".$icon."</td>
+				<td class='destination'><img src='".$image."' /></td>
+				<td class='destination'>".$poids."</td>";
+				break;
+			}
+		}
+		if (!$match) {
+			print "<td class='bubble'><i class='fa fa-circle-o fa-3x'></i></td>
+			<td class='destination'></td>
+			<td class='destination'></td>";
+		}
+		print "</tr>";
 	}
 }
+
+/*
+for ($j = 0; $j < count($bus); $j++) {
+if ($bus[$j]['arret'] == $k) {
+$poids = $bus[$j]['poids'];
+$poids /= 10;
+$poids -= 100;
+$poids = abs($poids);
+
+if ($poids > 66) {
+$image = "img/barre_rouge.png";
+} else if ($poids > 33 && $poids < 66) {
+$image = "img/barre_orange.png";
+} else if ($poids < 33) {
+$image = "img/barre_verte.png";
+}
+$icon = "<i class='fa fa-circle fa-3x'></i>";
+$poids .= "% full";
+} else {
+$icon = "<i class='fa fa-circle-o fa-3x'></i>";
+$image = "";
+$poids = "";
+}
+}*/
 
 function viewChoiceLine($bdd){
 	echo 'Choose your line :';
@@ -72,15 +115,15 @@ function viewChoiceLine($bdd){
 	foreach($stack as $valeurHexadecimale => $lignePath)
 	{
 
-	// Affichage de la ligne
-	echo "\t",'<option value="', $lignePath ,'"', $selected ,'>', $ligne ,'</option>',"\n";
-	// Remise à zéro de $selected
-	$selected='';
+		// Affichage de la ligne
+		echo "\t",'<option value="', $lignePath ,'"', $selected ,'>', $ligne ,'</option>',"\n";
+		// Remise à zéro de $selected
+		$selected='';
 	}
 	echo '</select>',"\n";
 	echo '
-            <input type="submit" value="Submit"/>
-        </form> ';
+	<input type="submit" value="Submit"/>
+	</form> ';
 }
 
 function viewChoiceLine2($bdd){
@@ -91,12 +134,12 @@ function viewChoiceLine2($bdd){
 	echo '<form method="post" action="emakina.php">';
 	echo '<select name="line" action="emakina.php">',"n";
 	while ($donnees = $requete->fetch()){
-		  echo '<option value="'.$donnees['idLigne'].'">'.$donnees['num_ligne'].'</option>',"\n";
+		echo '<option value="'.$donnees['idLigne'].'">'.$donnees['num_ligne'].'</option>',"\n";
 	}
 	echo '</select>';
 	echo '
-            <input type="submit" value="Submit"/>
-        </form> ';
+	<input type="submit" value="Submit"/>
+	</form> ';
 }
 
 function viewChoicePath($bdd, $line){
@@ -107,13 +150,13 @@ function viewChoicePath($bdd, $line){
 	echo '<form method="post" action="emakina.php?line='.$line.'">';
 	echo '<select name="path" action="emakina.php?line='.$line.'">',"n";
 	while ($donnees = $requete->fetch()){
-		  echo '<option value=0>'.$donnees['depart'].' - '.$donnees['terminus'].'</option>',"\n";
-		  echo '<option value=1>'.$donnees['terminus'].' - '.$donnees['depart'].'</option>',"\n";
+		echo '<option value=0>'.$donnees['depart'].' - '.$donnees['terminus'].'</option>',"\n";
+		echo '<option value=1>'.$donnees['terminus'].' - '.$donnees['depart'].'</option>',"\n";
 	}
 	echo '</select>';
 	echo '
-            <input type="submit" value="Submit"/>
-        </form> ';
+	<input type="submit" value="Submit"/>
+	</form> ';
 }
 
 
@@ -135,8 +178,8 @@ function viewLines($lines){
 	}
 	echo '</select>';
 	echo '
-            <input type="submit" value="Submit"/>
-        </form> ';
+	<input type="submit" value="Submit"/>
+	</form> ';
 }
 
 function viewLines2($lines){
@@ -147,22 +190,22 @@ function viewLines2($lines){
 		$class = ($i & 1) ? "buttonLine" : "buttonLine2";
 
 		echo '	<tr>
-	  				<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
-	  				<td class="'.$class.'" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -<span class="chevron"><i class="chevron fa fa-chevron-right"></i></span></br> '.$lines[$i]['terminus'].'</td>
-				</tr>';
+		<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
+		<td class="'.$class.'" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -<span class="chevron"><i class="chevron fa fa-chevron-right"></i></span></br> '.$lines[$i]['terminus'].'</td>
+		</tr>';
 		echo '<tr id="demo'.$i.'" class="collapse ">
-				<td></td>
-				<td>
-				<table>
-					<tr>
-				 		<td class="under_buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=0">'.$lines[$i]['depart'].'</td>
+		<td></td>
+		<td>
+		<table>
+		<tr>
+		<td class="under_buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=0">'.$lines[$i]['depart'].'</td>
 
-					</tr>
-					<tr>
-						<td class="under_buttonLine " ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=1">'.$lines[$i]['terminus'].'</td>
-					</tr>
-				</table>
-				</tr>';
+		</tr>
+		<tr>
+		<td class="under_buttonLine " ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=1">'.$lines[$i]['terminus'].'</td>
+		</tr>
+		</table>
+		</tr>';
 	}
 	//<td class="btn btn-default btn-block destination" onclick="function_js_ligne('.json_encode($lines[$i]).')">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</td>
 
@@ -184,34 +227,34 @@ function viewPat($path, $line){
 	echo '<form method="post" action="index.php?line='.$line.'">';
 	echo '<select name="path" action="index.php?line='.$line.'">',"n";
 
-		echo '<option value=0>'.$path[0].' - '.$path[1].'</option>',"\n";
-		echo '<option value=1>'.$path[1].' - '.$path[0].'</option>',"\n";
+	echo '<option value=0>'.$path[0].' - '.$path[1].'</option>',"\n";
+	echo '<option value=1>'.$path[1].' - '.$path[0].'</option>',"\n";
 
 	echo '</select>';
 	echo '
-            <input type="submit" value="Submit"/>
-        </form> ';
+	<input type="submit" value="Submit"/>
+	</form> ';
 
 }
 
 function viewPath($path, $line){
-		echo '<tr>
-	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=0">'.$path[0].'  -</br> '.$path[1].'</a></td>
-	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=1">'.$path[1].'  -</br> '.$path[0].'</a></td>
-				</tr>';
-	}
+	echo '<tr>
+	<td class="buttonLine" ><a href="index.php?line='.$line.'&path=0">'.$path[0].'  -</br> '.$path[1].'</a></td>
+	<td class="buttonLine" ><a href="index.php?line='.$line.'&path=1">'.$path[1].'  -</br> '.$path[0].'</a></td>
+	</tr>';
+}
 
 
 
 
 function viewConection(){
 	echo" <form method='post' action='emakina.php'>
-		  <label for='pseudo'>Pseudo* : </label>";
+	<label for='pseudo'>Pseudo* : </label>";
 	echo "<label for='pass'>Mot de passe* : </label>
-		  <input type='password' name='pass' id='pass' placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'' size='30' maxlength='15' required />
-		  <br/>	";
+	<input type='password' name='pass' id='pass' placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'' size='30' maxlength='15' required />
+	<br/>	";
 	echo "input type='submit' value='Login'/>
-		 </form>";
+	</form>";
 }
 
 function conection($bdd,$pseudo, $pass){
