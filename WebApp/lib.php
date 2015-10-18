@@ -45,13 +45,13 @@ function recupData($ligne, $path, $bdd){
 				$poids -= 100;
 				$poids = (int)abs($poids);
 
-				if ($poids > 75) {
+				if ($poids >= 75) {
 					$image = "img/barre_rouge.png";
-				} else if ($poids > 50 && $poids < 75) {
+				} else if ($poids > 50 && $poids <= 75) {
 					$image = "img/barre_orange.png";
-				} else if ($poids > 25 && $poids < 50) {
+				} else if ($poids > 25 && $poids <= 50) {
 					$image = "img/barre_jaune.png";
-				} else if ($poids < 25) {
+				} else if ($poids <= 25) {
 					$image = "img/barre_verte.png";
 				}
 				$icon = "<i class='fa fa-circle fa-3x'></i>";
