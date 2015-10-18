@@ -24,6 +24,9 @@
   <script>
   $(document).ready(function () {
   $(document).foundation();
+  $('a.left-off-canvas-toggle').on('click',function(){
+
+    });
   })
   </script>
   <div class="off-canvas-wrap docs-wrap" data-offcanvas>
