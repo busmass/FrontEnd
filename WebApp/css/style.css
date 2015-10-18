@@ -207,3 +207,23 @@ td.destination {
   border-left: none!important;
   right: 10px!important;
 }
+
+
+.logoForLogin
+{
+    padding-top : 20%;
+    margin-left : 20%;
+    margin-right : 20%;
+}
+
+.col-sm-10
+{
+  margin-top : 10%;
+  margin-left : 10%;
+  margin-right : 10%;
+}
+
+.buttonForget
+{
+  text-align : center;
+}

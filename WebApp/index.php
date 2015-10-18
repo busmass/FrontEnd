@@ -62,7 +62,7 @@ $bdd=coBdd();
           <li><a href="/"><i class="awicon fa fa-exchange"></i>Lines</a></li>
           <li><a href="#"><i class="awicon fa fa-heart"></i>Favorites</a></li>
           <li><a href="/index.php?page=co&id=youri"><i class="awicon fa fa-users"></i>Community</a></li>
-          <li><a href="#"><i class="awicon fa fa-cog"></i>Settings</a></li>
+          <li><a href="/index.php?page=log"><i class="awicon fa fa-cog"></i>Settings</a></li>
           <li><a href="#"><i class="awicon fa fa-question-circle"></i>Help</a></li>
         </ul>
       </aside>
@@ -70,6 +70,8 @@ $bdd=coBdd();
       if (isset($_GET['page'])) {
         if ($_GET['page'] == "co") {
           include_once 'chat.php';
+        } else if ($_GET['page'] == "log") {
+          include_once 'log.php';
         }
       } else {
         include_once 'lines.php';
