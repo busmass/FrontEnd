@@ -32,16 +32,23 @@ function recupData($ligne, $path, $bdd){
 		$poids /= 10;
 		$poids -= 100;
 		$poids = abs($poids);
-		echo '
+
+		if ($poids > 66) {
+			$image = "img/barre_rouge.png";
+		} else if ($poids > 33 && $poids < 66) {
+			$image = "img/barre_orange.png";
+		} else if ($poids < 33) {
+			$image = "img/barre_verte.png";
+		}
+
+		echo "
 		<tr>
-			<td class="number1" >'.$ligne.'</td>
-			<td class="destination" > Le bus est entre larret '.$donnee['arret'].' et larret '.((int)$donnee['arret'] + 1).' </td>
-			<td class="destination"> Capacite utilisee : '.$poids.'%</td>
-		</tr>';
+			<td class='number1'>".$ligne."</td>
+			<td class='destination'> Le bus est entre l'arrêt ".$donnee['arret']." et l'arrêt ".((int)$donnee['arret'] + 1)." </td>
+			<td class='destination'><img src='".$image."' /></td>
+			<td class='destination'>".$poids."% plein</td>
+		</tr>";
 	}
-
-	print '<a href="#" class="button radius">Radius Button</a>';
-
 }
 
 function viewChoiceLine($bdd){

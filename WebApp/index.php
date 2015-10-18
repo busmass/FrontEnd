@@ -55,14 +55,24 @@ $bdd=coBdd();
         </ul>
       </aside>
       <?php
-        if (isset($_GET['page'])) {
-          if ($_GET['page'] == "co") {
-            include_once 'chat.php';
-          }
-        } else {
-          include_once 'lines.php';
+      if (isset($_GET['page'])) {
+        if ($_GET['page'] == "co") {
+          include_once 'chat.php';
         }
-        ?>
+      } else {
+        include_once 'lines.php';
+        if (isset($_GET['line'])) {
+          print '<div class="row">
+              <div class="small-6 small-centered text-center columns">
+                <ul class="stack button-group">
+                <li><a href="/" class="button radius">Define another route</a></li>
+                <li><a href="/index.php?page=co&id=youri" class="button radius">Join the community</a></li>
+              </ul>
+            </div>
+          </div>';
+        }
+      }
+      ?>
       <a class="exit-off-canvas"></a>
     </div>
   </div>
