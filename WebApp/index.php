@@ -42,7 +42,7 @@ $bdd=coBdd();
         </section>
 
         <section class="right-small">
-          <a class="right"><span><i class="burger fa fa-compass fa-2x"></i></span></a>
+          <a href="http://bing.com" class="right"><span><i class="burger fa fa-compass fa-2x"></i></span></a>
         </section>
 
       </nav>

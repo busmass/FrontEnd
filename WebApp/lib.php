@@ -144,9 +144,11 @@ function viewLines2($lines){
 	for ($i=0; $i < $nb ; $i++) {
 		$mod=$i % 5;
 		$mod++;
+		$class = ($i & 1) ? "buttonLine" : "buttonLine2";
+
 		echo '	<tr>
 	  				<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
-	  				<td class="buttonLine btn-default" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -<span class="chevron"><i class="chevron fa fa-chevron-right"></i></span></br> '.$lines[$i]['terminus'].'</td>
+	  				<td class="'.$class.'" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -<span class="chevron"><i class="chevron fa fa-chevron-right"></i></span></br> '.$lines[$i]['terminus'].'</td>
 				</tr>';
 		echo '<tr id="demo'.$i.'" class="collapse ">
 				<td></td>
