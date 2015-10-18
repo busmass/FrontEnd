@@ -84,6 +84,7 @@ i.awicon {
 .number1{
   font-weight: bold;
   text-align: center;
+  font-size: 30px;
   background-color: pink;
   width: 50px;
   height: 50px;
@@ -91,6 +92,7 @@ i.awicon {
 }
 
 .number2{
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   background-color: lightgreen;
@@ -99,6 +101,7 @@ i.awicon {
   border-radius: 5px;
 }
 .number5{
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   background-color: orange;
@@ -107,6 +110,7 @@ i.awicon {
   border-radius: 5px;
 }
 .number4{
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   background-color: lightblue;
@@ -115,6 +119,7 @@ i.awicon {
   border-radius: 5px;
 }
 .number3{
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   background-color: yellow;
@@ -130,6 +135,10 @@ i.awicon {
 
   text-transform: uppercase;
 
+}
+.under_buttonLine{
+  font-size: 15px;
+   font-weight: bold;
 }
 
 .buttonLine:hover{

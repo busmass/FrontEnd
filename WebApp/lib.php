@@ -146,7 +146,20 @@ function viewLines2($lines){
 		$mod++;
 		echo '	<tr>
 	  				<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
-	  				<td class="buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</a></td>
+	  				<td class="buttonLine btn-default" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</td>
+				</tr>';
+		echo '<tr id="demo'.$i.'" class="collapse ">
+				<td></td>
+				<td>
+				<table>
+					<tr>
+				 		<td class="under_buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=0">'.$lines[$i]['depart'].'</td>
+						
+					</tr>
+					<tr>
+						<td class="under_buttonLine " ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=1">'.$lines[$i]['terminus'].'</td>
+					</tr>
+				</table>
 				</tr>';
 	}
 	//<td class="btn btn-default btn-block destination" onclick="function_js_ligne('.json_encode($lines[$i]).')">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</td>

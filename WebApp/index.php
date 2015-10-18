@@ -13,8 +13,11 @@
   <link rel="stylesheet" href="css/foundation.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.css">
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
+  <script src="js/bootstrap.js"></script>
   <script src="js/vendor/modernizr.js" type="text/javascript"></script>
 </head>
 <body>
