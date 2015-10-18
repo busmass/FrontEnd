@@ -19,6 +19,7 @@ $bdd=coBdd();
   <script src="js/foundation.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/vendor/modernizr.js" type="text/javascript"></script>
+  <script src="js/jquery.touchSwipe.min.js"></script>
 </head>
 <body>
   <script>
@@ -26,6 +27,14 @@ $bdd=coBdd();
     $(document).foundation();
     $('a.left-off-canvas-toggle').on('click',function(){
 
+    });
+    $(document).swipe({
+        swipeLeft: function (event, distance, duration, fingerCount, fingerData) {
+            $('.off-canvas-wrap').removeClass('move-right');
+        },
+        swipeRight: function (event, distance, duration, fingerCount, fingerData) {
+            $('.off-canvas-wrap').addClass('move-right');
+        }
     });
   })
   </script>
@@ -51,7 +60,6 @@ $bdd=coBdd();
         <ul class="off-canvas-list">
           <li class="logo"><img src="img/busmass.png"  /></li>
           <li><a href="/"><i class="awicon fa fa-exchange"></i>Lines</a></li>
-          <li><a href="#"><i class="awicon fa fa-map-marker"></i>Stops</a></li>
           <li><a href="#"><i class="awicon fa fa-heart"></i>Favorites</a></li>
           <li><a href="/index.php?page=co&id=youri"><i class="awicon fa fa-users"></i>Community</a></li>
           <li><a href="#"><i class="awicon fa fa-cog"></i>Settings</a></li>
