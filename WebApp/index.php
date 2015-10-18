@@ -7,7 +7,7 @@ $bdd=coBdd();
 <html>
 <html>
 <head>
-  <title>PageStop</title>
+  <title>BUSMASS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/foundation.min.css">
@@ -39,6 +39,10 @@ $bdd=coBdd();
 
         <section class="left-small">
           <a class="left-off-canvas-toggle" ><span><i class="burger fa fa-bars fa-2x"></i></span></a>
+        </section>
+
+        <section class="right-small">
+          <a class="right"><span><i class="burger fa fa-compass fa-2x"></i></span></a>
         </section>
 
       </nav>
