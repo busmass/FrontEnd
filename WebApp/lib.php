@@ -7,7 +7,7 @@
 function coBdd(){
 	$dbName= "as_eb778c54b5aa1fa";
 	$userName = "b0a941f833069a";
-	$passName = "41561c96";  
+	$passName = "41561c96";
 	$hostname = "us-cdbr-azure-central-a.cloudapp.net" ;
 	try{
 		//echo "<script>alert('Avant essai de connexion')</script>";
@@ -27,14 +27,14 @@ function recupData($ligne, $path, $bdd){
 	$stack=array();
 	$requete = $bdd->query('SELECT * FROM bus WHERE id_ligne='.$ligne.' AND path='.$path.'');
 	while ($donnees = $requete->fetch()){
-		
+
 		viewArret($bdd,$donnees['id'],$ligne);
 		$poids =$donnees['poids'];
 		$poids /= 10;
 		$poids = $poids -100;
 		$poids= abs($poids);
-		echo '	
-	  				
+		echo '
+
 		 			<td> Capacite utilisee : '.$poids.'%</td>
 		 		</tr>';
 	}
@@ -46,7 +46,7 @@ function viewArret($bdd,$busId, $line){
 	$requete = $bdd->query('SELECT arret FROM bus WHERE id='.$busId.' ');
 	$donnee = $requete->fetch();
 	$arret=$donnee['arret'];
-	echo '<tr>	
+	echo '<tr>
 				<td class="number1" >'.$line.'</td>
 				<td class="btn btn-default btn-block destination" > Le bus est entre larret '.$arret.' et larret '.((int)$arret + 1).' </td>';
 }
@@ -130,7 +130,7 @@ function viewLines($lines){
 	$nb=count($lines);
 	echo '<form method="post" action="emakina.php">';
 	echo '<select name="line" action="emakina.php">',"n";
-	for ($i=0; $i < $nb ; $i++) { 
+	for ($i=0; $i < $nb ; $i++) {
 		echo '<option value="'.$lines[$i]['idLigne'].'">'.$lines[$i]['num_ligne'].'</option>',"\n";
 	}
 	echo '</select>';
@@ -141,12 +141,12 @@ function viewLines($lines){
 
 function viewLines2($lines){
 	$nb=count($lines);
-	for ($i=0; $i < $nb ; $i++) { 
+	for ($i=0; $i < $nb ; $i++) {
 		$mod=$i % 5;
 		$mod++;
 		echo '	<tr>
 	  				<td class="number'.$mod.'" >'.$lines[$i]['num_ligne'].'</td>
-	  				<td class="buttonLine btn-default" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -</br> '.$lines[$i]['terminus'].'</td>
+	  				<td class="buttonLine btn-default" data-toggle="collapse" data-target="#demo'.$i.'">'.$lines[$i]['depart'].'  -<span class="chevron"><i class="chevron fa fa-chevron-right"></i></span></br> '.$lines[$i]['terminus'].'</td>
 				</tr>';
 		echo '<tr id="demo'.$i.'" class="collapse ">
 				<td></td>
@@ -154,7 +154,7 @@ function viewLines2($lines){
 				<table>
 					<tr>
 				 		<td class="under_buttonLine" ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=0">'.$lines[$i]['depart'].'</td>
-						
+
 					</tr>
 					<tr>
 						<td class="under_buttonLine " ><a href="index.php?line='.$lines[$i]['idLigne'].'&path=1">'.$lines[$i]['terminus'].'</td>
@@ -172,7 +172,7 @@ function getPaths($bdd, $line){
 	$path = array();
 	array_push($path, $donnee['depart']);
 	array_push($path, $donnee['terminus']);
-	
+
 	return $path;
 }
 
@@ -181,10 +181,10 @@ function viewPat($path, $line){
 	echo 'Choose your path :';
 	echo '<form method="post" action="index.php?line='.$line.'">';
 	echo '<select name="path" action="index.php?line='.$line.'">',"n";
-	
+
 		echo '<option value=0>'.$path[0].' - '.$path[1].'</option>',"\n";
 		echo '<option value=1>'.$path[1].' - '.$path[0].'</option>',"\n";
-	
+
 	echo '</select>';
 	echo '
             <input type="submit" value="Submit"/>
@@ -194,7 +194,7 @@ function viewPat($path, $line){
 
 function viewPath($path, $line){
 		echo '	<tr>
-	  				
+
 	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=0">'.$path[0].'  -</br> '.$path[1].'</a></td>
 	  				<td class="buttonLine" ><a href="index.php?line='.$line.'&path=1">'.$path[1].'  -</br> '.$path[0].'</a></td>
 				</tr>';
@@ -205,12 +205,12 @@ function viewPath($path, $line){
 
 function viewConection(){
 	echo" <form method='post' action='emakina.php'>
-		  <label for='pseudo'>Pseudo* : </label>"; 
+		  <label for='pseudo'>Pseudo* : </label>";
 	echo "<label for='pass'>Mot de passe* : </label>
 		  <input type='password' name='pass' id='pass' placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'' size='30' maxlength='15' required />
-		  <br/>	";	
+		  <br/>	";
 	echo "input type='submit' value='Login'/>
-		 </form>";		
+		 </form>";
 }
 
 function conection($bdd,$pseudo, $pass){
@@ -234,7 +234,7 @@ function signUp($bdd,$pseudo, $pass, $mail){
 	$requete=$bdd->prepare('INSERT INTO Users SET pseudo=?, pass=? , mail=?');
 	$requete->execute(array($pseudo,$pass,$mail));
 	return true;
-	
+
 }
 
 

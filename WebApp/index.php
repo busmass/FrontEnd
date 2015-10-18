@@ -34,7 +34,7 @@
       <nav class="tab-bar">
 
         <section class="middle tab-bar-section">
-          <img class="mainlogo" src="img/busmass.png"  />
+          <a href="/"><img class="mainlogo" src="img/busmass.png"  /></a>
         </section>
 
         <section class="left-small">
@@ -68,24 +68,20 @@
                       if (isset($_GET['line'])) {
                           $path=getPaths($bdd,$_GET['line']);
                           viewPath($path,$_GET['line']);
-                      }  
+                      }
                       else{
 
                         $lines=getLines($bdd);
                         viewLines2($lines);
                       }
-                    }                 
-
-
- 
-
+                    }
                     ?>
               </tbody>
             </table>
         </div>
       </section>
-    <a class="exit-off-canvas"></a>
     </div>
+    <a class="exit-off-canvas"></a>
   </div>
 </body>
 </html>
